@@ -1,0 +1,8 @@
+C:\dev\2019\digital-sign-api\digitalsign.common\bin\Debug\netcoreapp3.0\digitalsign.common.deps.json
+C:\dev\2019\digital-sign-api\digitalsign.common\bin\Debug\netcoreapp3.0\digitalsign.common.dll
+C:\dev\2019\digital-sign-api\digitalsign.common\bin\Debug\netcoreapp3.0\digitalsign.common.pdb
+C:\dev\2019\digital-sign-api\digitalsign.common\obj\Debug\netcoreapp3.0\digitalsign.common.AssemblyInfoInputs.cache
+C:\dev\2019\digital-sign-api\digitalsign.common\obj\Debug\netcoreapp3.0\digitalsign.common.AssemblyInfo.cs
+C:\dev\2019\digital-sign-api\digitalsign.common\obj\Debug\netcoreapp3.0\digitalsign.common.dll
+C:\dev\2019\digital-sign-api\digitalsign.common\obj\Debug\netcoreapp3.0\digitalsign.common.pdb
+C:\dev\2019\digital-sign-api\digitalsign.common\obj\Debug\netcoreapp3.0\digitalsign.common.csprojAssemblyReference.cache

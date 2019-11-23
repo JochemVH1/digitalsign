@@ -1,0 +1,11 @@
+C:\dev\2019\digital-sign-api\digitalsign.persistance\bin\Debug\netcoreapp3.0\digitalsign.persistance.deps.json
+C:\dev\2019\digital-sign-api\digitalsign.persistance\bin\Debug\netcoreapp3.0\digitalsign.persistance.dll
+C:\dev\2019\digital-sign-api\digitalsign.persistance\bin\Debug\netcoreapp3.0\digitalsign.persistance.pdb
+C:\dev\2019\digital-sign-api\digitalsign.persistance\bin\Debug\netcoreapp3.0\digitalsign.domain.dll
+C:\dev\2019\digital-sign-api\digitalsign.persistance\bin\Debug\netcoreapp3.0\digitalsign.domain.pdb
+C:\dev\2019\digital-sign-api\digitalsign.persistance\obj\Debug\netcoreapp3.0\digitalsign.persistance.csprojAssemblyReference.cache
+C:\dev\2019\digital-sign-api\digitalsign.persistance\obj\Debug\netcoreapp3.0\digitalsign.persistance.AssemblyInfoInputs.cache
+C:\dev\2019\digital-sign-api\digitalsign.persistance\obj\Debug\netcoreapp3.0\digitalsign.persistance.AssemblyInfo.cs
+C:\dev\2019\digital-sign-api\digitalsign.persistance\obj\Debug\netcoreapp3.0\digitalsign.persistance.csproj.CopyComplete
+C:\dev\2019\digital-sign-api\digitalsign.persistance\obj\Debug\netcoreapp3.0\digitalsign.persistance.dll
+C:\dev\2019\digital-sign-api\digitalsign.persistance\obj\Debug\netcoreapp3.0\digitalsign.persistance.pdb

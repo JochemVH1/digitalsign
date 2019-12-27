@@ -3,21 +3,23 @@ namespace digitalsign_api.Contracts.V1
     public static class ApiRoutes
     {
 
-        private const string ROUTE = "api";
-        private const string VERSION = "v1";
+        private const string Route = "api";
+        private const string Version = "v1";
 
-        private const string BASE = ROUTE + "/" + VERSION;
-
+        private const string Base = Route + "/" + Version;
+        
         public static class Message
         {
-            public const string Get = BASE + "/message";
+            public const string Get = Base + "/message";
+            public const string GetById = Base + "/message/{id}";
+            public const string Post = Base + "/message";
         }
 
         public static class Idenity
         {
-            public const string Login = BASE + "/login";
-            public const string Register = BASE + "/register";
-            public const string Refresh = BASE + "/refresh";
+            public const string Login = Base + "/login";
+            public const string Register = Base + "/register";
+            public const string Refresh = Base + "/refresh";
         }
     }
 }

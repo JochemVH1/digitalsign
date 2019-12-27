@@ -7,17 +7,10 @@ namespace digitalsign.application.Sensor.Core
     public class RegistrationManager
     {
         private readonly HashSet<RegistrationResult> _registrations;
-        
-        private static RegistrationManager _registrationManager;
 
-        private RegistrationManager()
+        public RegistrationManager()
         {
             _registrations = new HashSet<RegistrationResult>();
-        }
-
-        public static RegistrationManager Instance()
-        {
-            return _registrationManager ??= new RegistrationManager();
         }
 
         public RegistrationResult Validate(string token)

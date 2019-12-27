@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "digitalsign.api", "digitals
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "digitalsign.persistence", "digitalsign.persistence\digitalsign.persistence.csproj", "{FC834066-16FF-4C58-AAE4-EFB1FB8969E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digitalsign.console", "digitalsign.console\digitalsign.console.csproj", "{0BE98D2E-7BA9-4B8C-9373-1C1A9D50CB43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "digitalsign.console", "digitalsign.console\digitalsign.console.csproj", "{0BE98D2E-7BA9-4B8C-9373-1C1A9D50CB43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digitalsign.auth", "digitalsign.auth\digitalsign.auth.csproj", "{F9F3B0F1-0A59-45C4-9617-431A4F316F66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +105,18 @@ Global
 		{0BE98D2E-7BA9-4B8C-9373-1C1A9D50CB43}.Release|x64.Build.0 = Release|Any CPU
 		{0BE98D2E-7BA9-4B8C-9373-1C1A9D50CB43}.Release|x86.ActiveCfg = Release|Any CPU
 		{0BE98D2E-7BA9-4B8C-9373-1C1A9D50CB43}.Release|x86.Build.0 = Release|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Debug|x64.Build.0 = Debug|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Debug|x86.Build.0 = Debug|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Release|x64.ActiveCfg = Release|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Release|x64.Build.0 = Release|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Release|x86.ActiveCfg = Release|Any CPU
+		{F9F3B0F1-0A59-45C4-9617-431A4F316F66}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

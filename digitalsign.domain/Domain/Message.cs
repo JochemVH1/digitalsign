@@ -4,9 +4,9 @@ namespace digitalsign.domain.Domain
 {
     public class Message
     {
-        private DateTime _creationDate;
+        private readonly DateTime _creationDate;
 
-        public string Guid { get; set; }
+        public Guid Guid { get; set; }
         public DateTime CreationDate => _creationDate;
         public string Payload { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using digitalsign.common.Settings;
 using digitalsign_api.Installers;
 using Microsoft.AspNetCore.Builder;
@@ -15,6 +16,7 @@ namespace digitalsign_api
         {
             Configuration = configuration;
             _serviceProvider = serviceProvider;
+            Trace.Listeners.Add(new ConsoleTraceListener());
         }
 
         public IConfiguration Configuration { get; }

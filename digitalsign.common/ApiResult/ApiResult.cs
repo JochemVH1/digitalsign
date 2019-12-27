@@ -12,5 +12,15 @@ namespace digitalsign.common.ApiResult
         public ApiResult() {
             Notifications = new List<string>();
         }
+
+        public static ApiResult<T> FromValue(T value, bool success = true, StatusCode statusCode = StatusCode.Successful)
+        {
+            return new ApiResult<T>()
+            {
+                ContainingObject = value,
+                Success = success,
+                StatusCode = statusCode
+            };
+        }
     }
 }

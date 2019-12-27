@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Globalization;
-using System.Reactive.Linq;
+using System.Diagnostics;
 using System.Reactive.Subjects;
 using System.Threading;
-using System.Threading.Tasks;
+using digitalsign.application.Sensor.DataProvider;
 
 namespace digitalsign.application.Sensor.Core
 {
     public class Sensor
     {
-        public string Name { get; set; }
-
+        private string Name { get; }
         public RegistrationResult RegistrationResult { get; set; }
 
         private readonly Subject<SensorData> _internalData;
-
         public IObservable<SensorData> SensorData { get; set; }
+        public IDataProvider DataProvider { get; set; }
 
         public Sensor(string name)
         {
@@ -24,8 +22,10 @@ namespace digitalsign.application.Sensor.Core
             SensorData = _internalData;
         }
 
-        public void OnValueReceived(string data)
+        private void OnValueReceived(string data)
         {
+            Debug.WriteLine(data);
+            Data = data;
             _internalData.OnNext(new SensorData
             {
                 Data = data,
@@ -35,21 +35,11 @@ namespace digitalsign.application.Sensor.Core
             });
         }
 
+        public string Data { get; set; }
+
         public void ReceiveData(CancellationToken token)
         {
-            var random = new Random();
-            Task.Factory.StartNew(() =>
-            {
-                var temperature = 24.0;
-                while (true)
-                {
-
-                    if (token.IsCancellationRequested) break;
-                    temperature += (random.NextDouble() - 0.5) * -1;
-                    OnValueReceived(temperature.ToString(CultureInfo.CurrentCulture));
-                    Thread.Sleep(500);
-                }
-            }, token);
+            DataProvider.Receive(OnValueReceived, token);
         }
     }
 

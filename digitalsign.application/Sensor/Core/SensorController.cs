@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Principal;
-using System.Text;
 using System.Threading;
-using digitalsign.console;
+using digitalsign.application.Sensor.DataProvider;
 
 namespace digitalsign.application.Sensor.Core
 {
@@ -15,24 +11,21 @@ namespace digitalsign.application.Sensor.Core
     {
         private readonly ConcurrentDictionary<string, Sensor> _sensors;
 
-        private readonly RegistrationManager _registrationManager = RegistrationManager.Instance();
+        private readonly RegistrationManager _registrationManager;
 
         private readonly ReplaySubject<SensorData> _controller;
 
-        private static SensorController _sensorController;
+        public IDataProvider DataProvider { get; set; }
+        public int BufferSize { get; set; }
 
-        public static SensorController Instance()
-        {
-            return _sensorController ??= new SensorController();
-        }
-
-        private SensorController()
+        public SensorController()
         {
             _sensors = new ConcurrentDictionary<string, Sensor>();
-            _controller = new ReplaySubject<SensorData>(10);
+            _controller = new ReplaySubject<SensorData>(BufferSize);
+            _registrationManager = new RegistrationManager();
         }
 
-        public RegistrationResult ValidateSensor(string token)
+        private RegistrationResult ValidateSensor(string token)
         {
             var validation = _registrationManager.Validate(token);
             if(validation.State.Equals(ValidationState.Validated))
@@ -43,7 +36,7 @@ namespace digitalsign.application.Sensor.Core
             return _registrationManager.Validate(token);
         }
 
-        public bool TryAdd(Sensor sensor)
+        private bool TryAdd(Sensor sensor)
         {
             if (!sensor.RegistrationResult.State.Equals(ValidationState.Validated)) return false;
             if (!_sensors.TryAdd(sensor.RegistrationResult.Token, sensor)) return false;
@@ -51,7 +44,7 @@ namespace digitalsign.application.Sensor.Core
             return true;
         }
 
-        public bool TryGet(string token, out Sensor sensor)
+        private bool TryGet(string token, out Sensor sensor)
         {
             try
             {
@@ -66,20 +59,45 @@ namespace digitalsign.application.Sensor.Core
         }
 
 
-        public void Monitor()
-        {
-            _controller
-                .Where(x => x.State.Equals(ValidationState.Validated))
-                .Inspect("controller");
-        }
-
         public void Peek(string token)
         {
-            var sub = _controller
-                .Where(x => x.State.Equals(ValidationState.Validated) && x.Token.Equals(token))
-                .FirstAsync()
-                .Subscribe(x => Console.WriteLine($"{x.Name} ({x.Token}) produced: {x.Data}"), () => { });
-            sub.Dispose();
+            try
+            {
+                var sub = _controller
+                    .Where(x => x.State.Equals(ValidationState.Validated) && x.Token.Equals(token))
+                    .TakeLast(1)
+                    .Subscribe(x =>
+                    {
+                        Console.WriteLine($"{x.Name} ({x.Token}) produced: {x.Data}");
+                    }, () =>
+                    {
+                        Console.WriteLine($"Completed");
+                    });
+                sub.Dispose();
+            }
+            catch (AggregateException ae)
+            {
+                ae.Handle((e) => true);
+            }
+
+        }
+
+        public bool StartSensor(string sensorName, string receivedSensorToken, in CancellationToken token)
+        {
+            if (TryGet(receivedSensorToken, out var sensor))
+            {
+                sensor.ReceiveData(token);
+                return true;
+            }
+            sensor = new Sensor(sensorName)
+            {
+                RegistrationResult = ValidateSensor(receivedSensorToken),
+                DataProvider = DataProvider
+            };
+            if (!TryAdd(sensor)) return false;
+            sensor.ReceiveData(token);
+            return true;
+
         }
     }
 }

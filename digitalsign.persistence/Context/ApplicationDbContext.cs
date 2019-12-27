@@ -1,3 +1,4 @@
+using System.Reflection;
 using digitalsign.domain.Domain;
 using digitalsign.persistence.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -15,21 +16,7 @@ namespace digitalsign.persistence.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Message>()
-                .HasKey(m => m.Guid);
-            
-            modelBuilder.Entity<ApplicationUser>()
-                .HasOne(u => u.RefreshToken)
-                .WithOne(r => r.User);
-
-            modelBuilder.Entity<ApplicationUser>()
-                .ToTable("Users");
-
-            modelBuilder.Entity<RefreshToken>()
-                .HasKey(r => r.Token);
-
-            modelBuilder.Entity<RefreshToken>()
-                .ToTable("RefreshToken");    
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

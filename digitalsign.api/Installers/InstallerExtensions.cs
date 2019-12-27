@@ -17,9 +17,9 @@ namespace digitalsign_api.Installers
                 .Cast<IInstaller>()
                 .ToArray();
                 
-            int[] installOrder = new int[installers.Length ];
-            int currentIndex = 4;
-            int index = 0;
+            var installOrder = new int[installers.Length ];
+            var currentIndex = 4;
+            var index = 0;
             installers.ToList()
                 .ForEach(i => {
                     string typeName = i.GetType().Name;
@@ -36,7 +36,7 @@ namespace digitalsign_api.Installers
                     index++;
                 });
             Array.Sort(installOrder, installers);
-            foreach (IInstaller installer in installers) {
+            foreach (var installer in installers) {
                 installer.InstallService(services, configuration, serviceProvider);
             }
         }

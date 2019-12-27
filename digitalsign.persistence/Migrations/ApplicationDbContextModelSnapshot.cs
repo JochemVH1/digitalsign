@@ -150,7 +150,8 @@ namespace digitalsign_api.Migrations
 
             modelBuilder.Entity("digitalsign.domain.Domain.Message", b =>
                 {
-                    b.Property<string>("Guid")
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Payload")

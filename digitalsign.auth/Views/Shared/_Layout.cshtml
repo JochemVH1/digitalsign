@@ -1,0 +1,51 @@
+﻿@using IdentityServer4.Extensions
+@{
+    string name = null;
+    if (!true.Equals(ViewData["signed-out"]))
+    {
+        name = Context.User?.GetDisplayName();
+    }
+}
+<!DOCTYPE html>
+<html class="h-100">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>IdentityServer4</title>
+        <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+        <link rel="stylesheet" href="~/twitter-bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </head>
+    <body class="h-100 w-100">
+        <nav class="navbar fixed-top navbar-dark primary-bg">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="~/">
+                        <span class="navbar-brand">
+                            <img class=".icon-banner logo" src="~/img/logo.png" />
+                        </span>
+                    </a>
+                </div>
+
+                @if (!string.IsNullOrWhiteSpace(name))
+                {
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@name <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </nav>
+        @RenderBody()
+
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

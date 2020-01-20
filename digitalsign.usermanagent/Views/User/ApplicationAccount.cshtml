@@ -1,0 +1,19 @@
+﻿@model digitalsign.application.Contracts.V1.InputModels.User.UserRegistrationInputModel
+
+@{
+    ViewData["Title"] = "ApplicationAccount";
+}    
+<form id="myForm" asp-action="ApplicationAccount" autocomplete="on">
+    <input type="hidden" asp-for="Role" class="form-control" />
+    <input type="hidden" asp-for="Identity" class="form-control" />
+    <input type="hidden" asp-for="LastName" class="form-control" />
+    <input type="hidden" asp-for="FirstName" class="form-control" />
+    <input type="hidden" asp-for="Email" class="form-control" />
+</form>
+<script type="text/javascript">
+    window.onload=function(){
+        (function submitform() {
+            document.forms["myForm"].submit();
+        })();
+    }
+</script>

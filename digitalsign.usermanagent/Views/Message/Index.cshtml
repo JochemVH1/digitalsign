@@ -1,0 +1,65 @@
+﻿@model IEnumerable<digitalsign.application.Contracts.V1.ViewModels.Message.MessageViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="nav-adjust col-12">
+        <h1>@Resources.Resource.MessageTitel</h1>
+
+        <p>
+            <a asp-action="Create">@Resources.Resource.MessageNewLink</a>
+        </p>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" style="width: 5%">
+                            Id
+                        </th>
+                        <th scope="col" style="width: 15%">
+                            @Html.DisplayNameFor(model => model.UserName)
+                        </th>
+                        <th scope="col" style="width: 70%">
+                            @Html.DisplayNameFor(model => model.Payload)
+                        </th>
+                        <th scope="col" style="width: 10%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ 
+                        var counter = 1;
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @counter
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-row">
+                                        <p class="flex-grow-1 text-left">
+                                            @Html.DisplayFor(modelItem => item.Payload)
+                                        </p>
+                                        <p class="font-weight-light font-italic">
+                                            @Html.DisplayFor(modelItem => item.CreationDate)
+                                        </p>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div class="text-right">
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    </div>
+                                </td>
+                            </tr>
+                            counter++;
+                        }
+                    }
+                </tbody>
+            </table>
+
+    </div>
+

@@ -2,4 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\digitalsign.common\digitalsign.common.csproj" />
+  </ItemGroup>
 </Project>

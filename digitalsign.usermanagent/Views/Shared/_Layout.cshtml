@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Authentication
+@{
+    var user = Context.User;
+}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <link rel="stylesheet" href="~/twitter-bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="h-100 w-100">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark primary-bg">
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                <img class=".icon-banner logo" src="~/img/logo.png" />
+            </a>
+        </div>
+        <ul class="navbar-nav mr-auto d-flex flex-row justify-content-center align-items-baseline">
+            @if (user.Identity.IsAuthenticated)
+            {
+
+                <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Dashboard"? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Dashboard" asp-action="Index">@Resources.Resource.MenuDashboard</a>
+                </li>
+                <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Message"? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Message" asp-action="Index">@Resources.Resource.MenuMessage</a>
+                </li>
+                <li class="nav-item flex-grow-1 @(ViewContext.RouteData.Values["Controller"].ToString() == "Reminder"? "active" : "")">
+                    <a class="nav-link" asp-area="" asp-controller="Reminder" asp-action="Index">@Resources.Resource.MenuReminder</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item flex-grow-1">
+                    <a class="nav-link" asp-area="" asp-controller="User" asp-action="Create">@Resources.Resource.MenuRegister</a>
+                </li>
+            }
+            @if (user.Identity.IsAuthenticated)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Logout">@Resources.Resource.MenuLogout</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">@Resources.Resource.MenuLogin</a>
+                </li>
+            }
+        </ul>
+    </nav>
+    @RenderBody()
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/twitter-bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

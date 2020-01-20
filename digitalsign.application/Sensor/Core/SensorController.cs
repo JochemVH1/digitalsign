@@ -51,7 +51,7 @@ namespace digitalsign.application.Sensor.Core
                 sensor = _sensors[token];
                 return true;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 sensor = null;
                 return false;

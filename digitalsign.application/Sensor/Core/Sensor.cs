@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Reactive.Subjects;
 using System.Threading;
 using digitalsign.application.Sensor.DataProvider;
@@ -43,7 +44,7 @@ namespace digitalsign.application.Sensor.Core
         }
     }
 
-    public struct SensorData
+    public struct SensorData : IEquatable<SensorData>
     {
         public string Name { get; set; }
 
@@ -52,9 +53,42 @@ namespace digitalsign.application.Sensor.Core
         public ValidationState State { get; set; }
         public string Data { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return obj is SensorData data &&
+                   Name == data.Name &&
+                   Token == data.Token &&
+                   State == data.State &&
+                   Data == data.Data;
+        }
+
+        public bool Equals([AllowNull] SensorData other)
+        {
+            return Name == other.Name &&
+                   Token == other.Token &&
+                   State == other.State &&
+                   Data == other.Data;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name, Token, State, Data);
+        }
+
         public override string ToString()
         {
             return $"{Name} ({Token}): produced {Data}";
+        }
+
+
+        public static bool operator ==(SensorData left, SensorData right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(SensorData left, SensorData right)
+        {
+            return !(left == right);
         }
     }
 }

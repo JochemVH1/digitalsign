@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace digitalsign.application.Sensor.Core
@@ -17,7 +18,7 @@ namespace digitalsign.application.Sensor.Core
         {
             try
             {
-                var result = _registrations.Single(x => x.Token.Equals(token));
+                var result = _registrations.Single(x => string.Equals(token, x.Token, StringComparison.OrdinalIgnoreCase));
                 if (!_registrations.TryGetValue(result, out var registrationResult)) return RegistrationResultFactory.Invalid(token);
                 registrationResult.State = ValidationState.Validated;
                 _registrations.Remove(result);
@@ -43,12 +44,41 @@ namespace digitalsign.application.Sensor.Core
         }
     }
 
-    public struct RegistrationResult
+    public struct RegistrationResult : IEquatable<RegistrationResult>
     {
-        public string Token;
-        public DateTime CreationDate => DateTime.Now;
+        public string Token { get; set; }
+        public static DateTime CreationDate => DateTime.Now;
 
         public ValidationState State { get; set; }
+
+
+        public static bool operator ==(RegistrationResult left, RegistrationResult right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(RegistrationResult left, RegistrationResult right)
+        {
+            return !(left == right);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is RegistrationResult result &&
+                   Token == result.Token &&
+                   State == result.State;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Token, State);
+        }
+
+        public bool Equals([AllowNull] RegistrationResult other)
+        {
+            return Token == other.Token &&
+                   State == other.State;
+        }
     }
 
     internal class RegistrationResultFactory

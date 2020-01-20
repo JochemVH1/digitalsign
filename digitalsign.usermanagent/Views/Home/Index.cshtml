@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Authentication
+@{
+    ViewData["Title"] = "Home Page";
+    var user = Context.User;
+}
+@if (!user.Identity.IsAuthenticated)
+{
+
+}
+else
+{
+    <div class="nav-adjust container-fluid d-flex h-100 flex-column">
+        <div class="row justify-content-start align-items-start w-100 flex-fill d-flex">
+            <div class="col-md-6">
+                <h2>Properties</h2>
+
+                <ul class="list-group">
+                    @{ foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
+                        {
+                            var propName = prop.Key.StartsWith(".") ? prop.Key.Substring(1, prop.Key.Length - 1) : prop.Key;
+                            <li class="list-group-item" style="word-break: break-word"><p class="font-weight-bold">@propName</p><p>@prop.Value</p></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h2>Claims</h2>
+
+                <ul class="list-group">
+                    @{foreach (var claim in User.Claims)
+                        {
+                            var claimName = claim.Type.StartsWith(".") ? claim.Type.Substring(0, 1) : claim.Type;
+                            <li class="list-group-item text-justify"><p>@claimName</p><p>@claim.Value</p></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+

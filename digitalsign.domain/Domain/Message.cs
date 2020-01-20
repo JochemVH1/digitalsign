@@ -4,15 +4,10 @@ namespace digitalsign.domain.Domain
 {
     public class Message
     {
-        private readonly DateTime _creationDate;
-
         public Guid Guid { get; set; }
-        public DateTime CreationDate => _creationDate;
+        public DateTime CreationDate { get; set; }
         public string Payload { get; set; }
 
-        public Message()
-        {
-            _creationDate = DateTime.Now;
-        }
+        public virtual User FromUser { get; set; }
     }
 }

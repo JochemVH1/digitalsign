@@ -9,6 +9,8 @@ namespace digitalsign.persistence.Configuration
         public void Configure(EntityTypeBuilder<Message> builder)
         {
             builder.HasKey(m => m.Guid);
+            builder.HasOne(m => m.FromUser)
+                .WithMany(u => u.Messages);
         }
     }
 }

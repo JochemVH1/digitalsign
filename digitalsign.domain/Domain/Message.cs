@@ -7,7 +7,8 @@ namespace digitalsign.domain.Domain
         public Guid Guid { get; set; }
         public DateTime CreationDate { get; set; }
         public string Payload { get; set; }
-
         public virtual User FromUser { get; set; }
+
+        public virtual Task? Task { get; set; }
     }
 }

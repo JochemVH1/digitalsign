@@ -9,15 +9,13 @@ using digitalsign.application.Contracts.V1.CreateModels.Message;
 using digitalsign.application.Contracts.V1.InputModels.Message;
 using digitalsign.application.Contracts.V1.ViewModels.Message;
 using digitalsign.application.Services.Interface;
+using digitalsign.dashboard.Controllers;
 using digitalsign.usermanagent;
-using digitalsign.usermanagent.Areas;
-using digitalsign.usermanagent.Controllers;
-using digitalsign.usermanagent.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace digitalsign.usermanagent.Controllers
+namespace digitalsign.dashboard.Controllers
 {
     [Authorize]
     public class MessageController : BaseController

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using digitalsign.userstore.Models;
+using digitalsign.auth.Models;
 using IdentityModel;
 using IdentityServer4.Events;
 using IdentityServer4.Services;

@@ -3,7 +3,7 @@
 
 
 using digitalsign.auth.Controllers.Account;
-using digitalsign.userstore.Models;
+using digitalsign.auth.Models;
 using IdentityModel;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;

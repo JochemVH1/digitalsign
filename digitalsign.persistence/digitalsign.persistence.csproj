@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +13,14 @@
     <Compile Remove="Migrations\20200110155902_AddUser.Designer.cs" />
     <Compile Remove="Migrations\20200110160803_AddUser.cs" />
     <Compile Remove="Migrations\20200110160803_AddUser.Designer.cs" />
+    <Compile Remove="Migrations\20200122212221_AddReminder.cs" />
+    <Compile Remove="Migrations\20200122212221_AddReminder.Designer.cs" />
+    <Compile Remove="Migrations\20200122213030_AddReminder.cs" />
+    <Compile Remove="Migrations\20200122213030_AddReminder.Designer.cs" />
+    <Compile Remove="Migrations\20200122213130_AddReminder.cs" />
+    <Compile Remove="Migrations\20200122213130_AddReminder.Designer.cs" />
+    <Compile Remove="Migrations\20200122214414_AddReminder.cs" />
+    <Compile Remove="Migrations\20200122214414_AddReminder.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

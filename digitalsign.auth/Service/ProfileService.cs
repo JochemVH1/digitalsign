@@ -1,5 +1,5 @@
-﻿using digitalsign.common.Enumeration;
-using digitalsign.userstore.Models;
+﻿using digitalsign.auth.Models;
+using digitalsign.common.Enumeration;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Services;

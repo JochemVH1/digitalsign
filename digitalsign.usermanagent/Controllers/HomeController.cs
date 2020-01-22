@@ -7,8 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using digitalsign.usermanagent.Models;
 using Microsoft.AspNetCore.Authorization;
+using digitalsign;
+using digitalsign.usermanagent;
+using digitalsign.dashboard.Controllers;
 
-namespace digitalsign.usermanagent.Controllers
+namespace digitalsign.dashboard.Controllers
 {
     public class HomeController : Controller
     {

@@ -81,7 +81,7 @@ namespace digitalsign.application.Services
                     UserName = user.FullName ?? ""
                 };
                 return viewModel;
-            }catch(Exception e)
+            }catch(Exception)
             {
                 throw;
             }

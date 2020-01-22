@@ -1,11 +1,14 @@
-﻿using System;
+﻿using digitalsign;
+using digitalsign.dashboard.Extensions;
+using digitalsign.usermanagent;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace digitalsign.usermanagent.Extensions
+namespace digitalsign.dashboard.Extensions
 {
     public static class ClaimsIdentityExtensions
     {

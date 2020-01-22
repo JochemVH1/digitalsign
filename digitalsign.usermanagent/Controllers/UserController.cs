@@ -7,22 +7,25 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using digitalsign;
 using digitalsign.application.Contracts.V1.CreateModels.User;
 using digitalsign.application.Contracts.V1.InputModels.User;
 using digitalsign.application.Services.Interface;
 using digitalsign.common.Enumeration;
+using digitalsign.dashboard.Controllers;
+using digitalsign.usermanagent;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace digitalsign.usermanagent.Controllers
+namespace digitalsign.dashboard.Controllers
 {
     public class UserController : Controller
     {
-        public IUserService _userservice { get; }
+        private readonly IUserService _userservice;
 
-        private IHttpClientFactory _httpClientFactory;
+        private readonly IHttpClientFactory _httpClientFactory;
 
         public UserController(IUserService userservice,
             IHttpClientFactory httpClientFactory)
@@ -78,9 +81,9 @@ namespace digitalsign.usermanagent.Controllers
         private UserRegistrationInputModel BuildUserRegistrationModelFromClaims(IEnumerable<Claim> claims)
         {
             var model = new UserRegistrationInputModel();
-            foreach(var claim in claims)
+            foreach (var claim in claims)
             {
-                if(string.Equals(claim.Type.ToUpper(), "GIVEN_NAME"))
+                if (string.Equals(claim.Type.ToUpper(), "GIVEN_NAME"))
                 {
                     model.FirstName = claim.Value;
                 }
@@ -94,7 +97,7 @@ namespace digitalsign.usermanagent.Controllers
                 }
                 if (string.Equals(claim.Type.ToUpper(), "ROLE"))
                 {
-                    model.Role = (UserRole) Enum.Parse(typeof(UserRole), claim.Value);
+                    model.Role = (UserRole)Enum.Parse(typeof(UserRole), claim.Value);
                 }
                 if (string.Equals(claim.Type.ToUpper(), "SUB"))
                 {
@@ -111,7 +114,7 @@ namespace digitalsign.usermanagent.Controllers
             try
             {
                 var result = await _userservice.AddAsync(model);
-                if(result != null)
+                if (result != null)
                 {
                     return RedirectToAction("Index", "Home");
                 }
@@ -121,7 +124,7 @@ namespace digitalsign.usermanagent.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            
+
         }
 
         // GET: Account/Edit/5

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using digitalsign;
+using digitalsign.dashboard.Controllers;
+using digitalsign.usermanagent;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace digitalsign.usermanagent.Controllers
+namespace digitalsign.dashboard.Controllers
 {
     public class ReminderController : Controller
     {

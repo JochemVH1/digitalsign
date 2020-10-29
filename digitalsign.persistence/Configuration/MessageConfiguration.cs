@@ -11,6 +11,10 @@ namespace digitalsign.persistence.Configuration
             builder.HasKey(m => m.Guid);
             builder.HasOne(m => m.FromUser)
                 .WithMany(u => u.Messages);
+            builder.HasOne(m => m.Task)
+                .WithOne(t => t.Message)
+                .HasForeignKey<Task>(t => t.MessageId)
+                .IsRequired(false);
         }
     }
 }

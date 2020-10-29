@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using digitalsign.application.Services;
 using digitalsign.application.Services.Interface;
 using digitalsign.persistence.Context;
@@ -60,7 +62,8 @@ namespace digitalsign.usermanagent
             });
 
             services.AddRazorPages();
-
+            
+            services.AddAutoMapper(typeof(application.Mappings.MessageProfile).Assembly);
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IUserService, UserService>();
             services.AddHttpClient("identity server", c =>

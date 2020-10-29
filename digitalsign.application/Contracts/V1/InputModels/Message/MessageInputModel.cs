@@ -8,5 +8,9 @@ namespace digitalsign.application.Contracts.V1.InputModels.Message
         [Display(Name = "MessagePayload", ResourceType = typeof(Resource))]
         [Required]
         public string Payload { get; set; }
+
+        [Display(Name = "MessageTask", ResourceType = typeof(Resource))]
+
+        public bool IsTask { get; set; }
     }
 }

@@ -19,6 +19,10 @@ namespace digitalsign.domain.Domain
         public UserRole Role {get; set;}
 
         public virtual IList<Message> Messages { get; set; }
+        public virtual IList<Task> CreatedTasks { get; set; }
+        public virtual IList<Task> CompletedTasks { get; set; }
+
+
 
         public User()
         {

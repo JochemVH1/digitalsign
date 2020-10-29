@@ -153,8 +153,11 @@
   <data name="MessagePayload" xml:space="preserve">
     <value>Bericht</value>
   </data>
+  <data name="MessageTask" xml:space="preserve">
+    <value>Taak</value>
+  </data>
   <data name="MessageTitel" xml:space="preserve">
-    <value>Overzicht</value>
+    <value>Mijn berichten</value>
   </data>
   <data name="MessageUserName" xml:space="preserve">
     <value>Naam</value>

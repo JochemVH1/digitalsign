@@ -10,5 +10,14 @@ namespace digitalsign.domain.Domain
         public virtual User FromUser { get; set; }
 
         public virtual Task? Task { get; set; }
+
+        public void AddTask()
+        {
+            Task = new Task
+            {
+                Message = this,
+                CreatedUser = FromUser
+            };
+        }
     }
 }

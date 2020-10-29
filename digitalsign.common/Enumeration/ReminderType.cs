@@ -7,4 +7,11 @@
         Monthly,
         Yearly
     }
+
+    public enum TaskState
+    {
+        None,
+        Created,
+        Completed
+    }
 }

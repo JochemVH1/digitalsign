@@ -21,6 +21,8 @@
     <Compile Remove="Migrations\20200122213130_AddReminder.Designer.cs" />
     <Compile Remove="Migrations\20200122214414_AddReminder.cs" />
     <Compile Remove="Migrations\20200122214414_AddReminder.Designer.cs" />
+    <Compile Remove="Migrations\20200123091620_AddTask.cs" />
+    <Compile Remove="Migrations\20200123091620_AddTask.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

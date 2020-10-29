@@ -1,0 +1,30 @@
+﻿@model digitalsign.application.Contracts.V1.InputModels.Message.MessageInputModel
+<div class="col-xl-4 col-xs-6">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title text-center">
+                <img class="img-responsive logo" src="~/img/logo.png" />
+                <h3 class="card-text">@Resources.Resource.MessageNewTitle</h3>
+            </div>
+            <form asp-action="Create" asp-controller="Message">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <fieldset>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Payload" class="control-label"></label>
+                        <input asp-for="Payload" class="form-control" />
+                        <span asp-validation-for="Payload" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IsTask" class="control-label"></label>
+                        <input asp-for="IsTask" class="form-check-inline" type="checkbox" />
+                        <span asp-validation-for="IsTask" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

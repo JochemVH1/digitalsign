@@ -169,7 +169,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overzicht.
+        ///   Looks up a localized string similar to Taak.
+        /// </summary>
+        public static string MessageTask {
+            get {
+                return ResourceManager.GetString("MessageTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mijn berichten.
         /// </summary>
         public static string MessageTitel {
             get {
